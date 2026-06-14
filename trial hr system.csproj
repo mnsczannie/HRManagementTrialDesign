@@ -88,5 +88,20 @@
   <ItemGroup>
     <None Include="Resources\503e119b-51dc-4328-84cd-80695c148844.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\%40project log.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\snoop-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\snoop-removebg-preview %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\snoop-removebg-preview %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\projectlog.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
