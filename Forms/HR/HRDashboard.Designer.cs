@@ -90,6 +90,7 @@
             this.lblTime.Size = new System.Drawing.Size(95, 36);
             this.lblTime.TabIndex = 29;
             this.lblTime.Text = "lblTime";
+            this.lblTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.lblTime.Click += new System.EventHandler(this.lblTime_Click);
             // 
             // textBox4
