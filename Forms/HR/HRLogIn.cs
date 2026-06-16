@@ -20,13 +20,7 @@ namespace trial_hr_system.Forms.HR
         {
             InitializeComponent();
         }
-        string connString =
-"Server=tcp:hr-applicant-server.database.windows.net,1433;" +
-"Initial Catalog=hr_applicant_db;" +
-"User ID=hradmin;" +
-"Password=YOUR_NEW_PASSWORD;" +
-"Encrypt=True;" +
-"TrustServerCertificate=False;";
+        
         public static void RegisterUser(string name, string email, string password, string role)
         {
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
@@ -34,6 +28,13 @@ namespace trial_hr_system.Forms.HR
             string query = @"
         INSERT INTO users (full_name, email, password, role)
         VALUES (@name, @email, @password, @role)";
+            string connString =
+"Server=tcp:hr-applicant-server.database.windows.net,1433;" +
+"Initial Catalog=hr_applicant_db;" +
+"User ID=hradmin;" +
+"Password=YOUR_NEW_PASSWORD;" +
+"Encrypt=True;" +
+"TrustServerCertificate=False;";
 
             using (SqlConnection conn = new SqlConnection(connString))
             {

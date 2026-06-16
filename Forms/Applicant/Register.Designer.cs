@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.Sign_In = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtFullName = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -52,22 +52,34 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.hatdog = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.textBox17 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtPhone = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.textBox21 = new System.Windows.Forms.TextBox();
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.textBox23 = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.dtpBirthdate = new System.Windows.Forms.DateTimePicker();
+            this.cmbGender = new System.Windows.Forms.ComboBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtProvince = new System.Windows.Forms.TextBox();
+            this.txtZip = new System.Windows.Forms.TextBox();
+            this.txtSchool = new System.Windows.Forms.TextBox();
+            this.txtDegree = new System.Windows.Forms.TextBox();
+            this.txtYearGrad = new System.Windows.Forms.TextBox();
+            this.txtSkills = new System.Windows.Forms.TextBox();
+            this.txtCompany = new System.Windows.Forms.TextBox();
+            this.txtPosition = new System.Windows.Forms.TextBox();
+            this.txtDuration = new System.Windows.Forms.TextBox();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -81,18 +93,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
-            // Sign_In
+            // btnRegister
             // 
-            this.Sign_In.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.Sign_In.Font = new System.Drawing.Font("Patrick Hand", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Sign_In.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.Sign_In.Location = new System.Drawing.Point(986, 578);
-            this.Sign_In.Name = "Sign_In";
-            this.Sign_In.Size = new System.Drawing.Size(227, 41);
-            this.Sign_In.TabIndex = 36;
-            this.Sign_In.Text = "Create Account";
-            this.Sign_In.UseVisualStyleBackColor = false;
-            this.Sign_In.Click += new System.EventHandler(this.Dashboard_Click);
+            this.btnRegister.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.btnRegister.Font = new System.Drawing.Font("Patrick Hand", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegister.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnRegister.Location = new System.Drawing.Point(492, 607);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(227, 41);
+            this.btnRegister.TabIndex = 36;
+            this.btnRegister.Text = "Create Account";
+            this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.Dashboard_Click);
             // 
             // textBox12
             // 
@@ -119,15 +131,15 @@
             this.linkLabel1.Text = "Already have an account? Sign-In";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // txtEmail
+            // txtFullName
             // 
-            this.txtEmail.AcceptsReturn = true;
-            this.txtEmail.BackColor = System.Drawing.Color.Goldenrod;
-            this.txtEmail.Font = new System.Drawing.Font("Patrick Hand", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(948, 250);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(139, 33);
-            this.txtEmail.TabIndex = 30;
+            this.txtFullName.AcceptsReturn = true;
+            this.txtFullName.BackColor = System.Drawing.Color.Goldenrod;
+            this.txtFullName.Font = new System.Drawing.Font("Patrick Hand", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFullName.Location = new System.Drawing.Point(948, 250);
+            this.txtFullName.Name = "txtFullName";
+            this.txtFullName.Size = new System.Drawing.Size(216, 33);
+            this.txtFullName.TabIndex = 30;
             // 
             // panel4
             // 
@@ -337,17 +349,17 @@
             this.pictureBox3.TabIndex = 39;
             this.pictureBox3.TabStop = false;
             // 
-            // textBox14
+            // hatdog
             // 
-            this.textBox14.BackColor = System.Drawing.Color.Ivory;
-            this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox14.Font = new System.Drawing.Font("Patrick Hand", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox14.Location = new System.Drawing.Point(953, 228);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(81, 21);
-            this.textBox14.TabIndex = 43;
-            this.textBox14.Text = "FIRST NAME";
-            this.textBox14.TextChanged += new System.EventHandler(this.textBox14_TextChanged);
+            this.hatdog.BackColor = System.Drawing.Color.Ivory;
+            this.hatdog.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.hatdog.Font = new System.Drawing.Font("Patrick Hand", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hatdog.Location = new System.Drawing.Point(953, 228);
+            this.hatdog.Name = "hatdog";
+            this.hatdog.Size = new System.Drawing.Size(81, 21);
+            this.hatdog.TabIndex = 43;
+            this.hatdog.Text = "FULL NAME";
+            this.hatdog.TextChanged += new System.EventHandler(this.textBox14_TextChanged);
             // 
             // textBox15
             // 
@@ -384,27 +396,6 @@
             this.textBox17.TabIndex = 41;
             this.textBox17.Text = "CREATE AN ACCOUNT";
             // 
-            // textBox7
-            // 
-            this.textBox7.BackColor = System.Drawing.Color.Ivory;
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Font = new System.Drawing.Font("Patrick Hand", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(1109, 227);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(81, 21);
-            this.textBox7.TabIndex = 44;
-            this.textBox7.Text = "LAST NAME";
-            // 
-            // textBox8
-            // 
-            this.textBox8.AcceptsReturn = true;
-            this.textBox8.BackColor = System.Drawing.Color.Goldenrod;
-            this.textBox8.Font = new System.Drawing.Font("Patrick Hand", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(1109, 250);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(139, 33);
-            this.textBox8.TabIndex = 45;
-            // 
             // textBox9
             // 
             this.textBox9.BackColor = System.Drawing.Color.Ivory;
@@ -427,28 +418,28 @@
             this.textBox10.TabIndex = 47;
             this.textBox10.Text = "PHONE NUMBER";
             // 
-            // textBox11
+            // txtEmail
             // 
-            this.textBox11.AcceptsReturn = true;
-            this.textBox11.BackColor = System.Drawing.Color.Goldenrod;
-            this.textBox11.Font = new System.Drawing.Font("Patrick Hand", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(948, 308);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(216, 33);
-            this.textBox11.TabIndex = 48;
+            this.txtEmail.AcceptsReturn = true;
+            this.txtEmail.BackColor = System.Drawing.Color.Goldenrod;
+            this.txtEmail.Font = new System.Drawing.Font("Patrick Hand", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(948, 308);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(216, 33);
+            this.txtEmail.TabIndex = 48;
             // 
-            // textBox13
+            // txtPhone
             // 
-            this.textBox13.AcceptsReturn = true;
-            this.textBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtPhone.AcceptsReturn = true;
+            this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox13.BackColor = System.Drawing.Color.Goldenrod;
-            this.textBox13.Font = new System.Drawing.Font("Patrick Hand", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.Location = new System.Drawing.Point(948, 368);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(216, 33);
-            this.textBox13.TabIndex = 49;
+            this.txtPhone.BackColor = System.Drawing.Color.Goldenrod;
+            this.txtPhone.Font = new System.Drawing.Font("Patrick Hand", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhone.Location = new System.Drawing.Point(948, 368);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(216, 33);
+            this.txtPhone.TabIndex = 49;
             // 
             // textBox18
             // 
@@ -461,35 +452,35 @@
             this.textBox18.TabIndex = 50;
             this.textBox18.Text = "PASSWORD";
             // 
-            // textBox19
+            // txtPassword
             // 
-            this.textBox19.AcceptsReturn = true;
-            this.textBox19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtPassword.AcceptsReturn = true;
+            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox19.BackColor = System.Drawing.Color.Goldenrod;
-            this.textBox19.Font = new System.Drawing.Font("Patrick Hand", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox19.Location = new System.Drawing.Point(948, 472);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.PasswordChar = '*';
-            this.textBox19.Size = new System.Drawing.Size(216, 33);
-            this.textBox19.TabIndex = 51;
-            this.textBox19.UseSystemPasswordChar = true;
+            this.txtPassword.BackColor = System.Drawing.Color.Goldenrod;
+            this.txtPassword.Font = new System.Drawing.Font("Patrick Hand", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(948, 472);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(216, 33);
+            this.txtPassword.TabIndex = 51;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
-            // textBox20
+            // txtConfirmPassword
             // 
-            this.textBox20.AcceptsReturn = true;
-            this.textBox20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtConfirmPassword.AcceptsReturn = true;
+            this.txtConfirmPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox20.BackColor = System.Drawing.Color.Goldenrod;
-            this.textBox20.Font = new System.Drawing.Font("Patrick Hand", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox20.Location = new System.Drawing.Point(948, 530);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.PasswordChar = '*';
-            this.textBox20.Size = new System.Drawing.Size(216, 33);
-            this.textBox20.TabIndex = 53;
-            this.textBox20.UseSystemPasswordChar = true;
+            this.txtConfirmPassword.BackColor = System.Drawing.Color.Goldenrod;
+            this.txtConfirmPassword.Font = new System.Drawing.Font("Patrick Hand", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConfirmPassword.Location = new System.Drawing.Point(948, 530);
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.PasswordChar = '*';
+            this.txtConfirmPassword.Size = new System.Drawing.Size(216, 33);
+            this.txtConfirmPassword.TabIndex = 53;
+            this.txtConfirmPassword.UseSystemPasswordChar = true;
             // 
             // textBox21
             // 
@@ -527,35 +518,153 @@
             this.textBox23.Text = "Password must be at least 8 characters with \r\n";
             this.textBox23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(460, 120);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(100, 20);
+            this.txtAddress.TabIndex = 56;
+            this.txtAddress.Text = "adres";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // dtpBirthdate
+            // 
+            this.dtpBirthdate.Location = new System.Drawing.Point(483, 170);
+            this.dtpBirthdate.Name = "dtpBirthdate";
+            this.dtpBirthdate.Size = new System.Drawing.Size(200, 20);
+            this.dtpBirthdate.TabIndex = 58;
+            // 
+            // cmbGender
+            // 
+            this.cmbGender.FormattingEnabled = true;
+            this.cmbGender.Location = new System.Drawing.Point(483, 228);
+            this.cmbGender.Name = "cmbGender";
+            this.cmbGender.Size = new System.Drawing.Size(121, 21);
+            this.cmbGender.TabIndex = 59;
+            // 
+            // txtCity
+            // 
+            this.txtCity.Location = new System.Drawing.Point(492, 269);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(100, 20);
+            this.txtCity.TabIndex = 60;
+            this.txtCity.Text = "city";
+            // 
+            // txtProvince
+            // 
+            this.txtProvince.Location = new System.Drawing.Point(492, 308);
+            this.txtProvince.Name = "txtProvince";
+            this.txtProvince.Size = new System.Drawing.Size(100, 20);
+            this.txtProvince.TabIndex = 61;
+            this.txtProvince.Text = "provein ce";
+            // 
+            // txtZip
+            // 
+            this.txtZip.Location = new System.Drawing.Point(483, 347);
+            this.txtZip.Name = "txtZip";
+            this.txtZip.Size = new System.Drawing.Size(100, 20);
+            this.txtZip.TabIndex = 62;
+            this.txtZip.Text = "zip";
+            // 
+            // txtSchool
+            // 
+            this.txtSchool.Location = new System.Drawing.Point(483, 377);
+            this.txtSchool.Name = "txtSchool";
+            this.txtSchool.Size = new System.Drawing.Size(100, 20);
+            this.txtSchool.TabIndex = 63;
+            this.txtSchool.Text = "zip";
+            // 
+            // txtDegree
+            // 
+            this.txtDegree.Location = new System.Drawing.Point(483, 416);
+            this.txtDegree.Name = "txtDegree";
+            this.txtDegree.Size = new System.Drawing.Size(100, 20);
+            this.txtDegree.TabIndex = 64;
+            this.txtDegree.Text = "zip";
+            // 
+            // txtYearGrad
+            // 
+            this.txtYearGrad.Location = new System.Drawing.Point(483, 454);
+            this.txtYearGrad.Name = "txtYearGrad";
+            this.txtYearGrad.Size = new System.Drawing.Size(100, 20);
+            this.txtYearGrad.TabIndex = 65;
+            this.txtYearGrad.Text = "zip";
+            // 
+            // txtSkills
+            // 
+            this.txtSkills.Location = new System.Drawing.Point(483, 481);
+            this.txtSkills.Name = "txtSkills";
+            this.txtSkills.Size = new System.Drawing.Size(100, 20);
+            this.txtSkills.TabIndex = 66;
+            this.txtSkills.Text = "zip";
+            // 
+            // txtCompany
+            // 
+            this.txtCompany.Location = new System.Drawing.Point(483, 512);
+            this.txtCompany.Name = "txtCompany";
+            this.txtCompany.Size = new System.Drawing.Size(100, 20);
+            this.txtCompany.TabIndex = 67;
+            this.txtCompany.Text = "zip";
+            // 
+            // txtPosition
+            // 
+            this.txtPosition.Location = new System.Drawing.Point(492, 543);
+            this.txtPosition.Name = "txtPosition";
+            this.txtPosition.Size = new System.Drawing.Size(100, 20);
+            this.txtPosition.TabIndex = 68;
+            this.txtPosition.Text = "zip";
+            // 
+            // txtDuration
+            // 
+            this.txtDuration.Location = new System.Drawing.Point(492, 578);
+            this.txtDuration.Name = "txtDuration";
+            this.txtDuration.Size = new System.Drawing.Size(100, 20);
+            this.txtDuration.TabIndex = 69;
+            this.txtDuration.Text = "zip";
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Ivory;
-            this.BackgroundImage = global::trial_hr_system.Properties.Resources.spiral1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.txtDuration);
+            this.Controls.Add(this.txtPosition);
+            this.Controls.Add(this.txtCompany);
+            this.Controls.Add(this.txtSkills);
+            this.Controls.Add(this.txtYearGrad);
+            this.Controls.Add(this.txtDegree);
+            this.Controls.Add(this.txtSchool);
+            this.Controls.Add(this.txtZip);
+            this.Controls.Add(this.txtProvince);
+            this.Controls.Add(this.txtCity);
+            this.Controls.Add(this.cmbGender);
+            this.Controls.Add(this.dtpBirthdate);
+            this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.textBox23);
             this.Controls.Add(this.textBox22);
-            this.Controls.Add(this.textBox20);
+            this.Controls.Add(this.txtConfirmPassword);
             this.Controls.Add(this.textBox21);
-            this.Controls.Add(this.textBox19);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.textBox18);
-            this.Controls.Add(this.textBox13);
-            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.txtPhone);
+            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.textBox10);
             this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox14);
+            this.Controls.Add(this.hatdog);
             this.Controls.Add(this.textBox15);
             this.Controls.Add(this.textBox16);
             this.Controls.Add(this.textBox17);
             this.Controls.Add(this.lblTime);
-            this.Controls.Add(this.Sign_In);
+            this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.textBox12);
             this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtFullName);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.panel2);
@@ -584,10 +693,10 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.Button Sign_In;
+        private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtFullName;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox textBox2;
@@ -606,21 +715,33 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox hatdog;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.TextBox textBox21;
         private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.DateTimePicker dtpBirthdate;
+        private System.Windows.Forms.ComboBox cmbGender;
+        private System.Windows.Forms.TextBox txtCity;
+        private System.Windows.Forms.TextBox txtProvince;
+        private System.Windows.Forms.TextBox txtZip;
+        private System.Windows.Forms.TextBox txtSchool;
+        private System.Windows.Forms.TextBox txtDegree;
+        private System.Windows.Forms.TextBox txtYearGrad;
+        private System.Windows.Forms.TextBox txtSkills;
+        private System.Windows.Forms.TextBox txtCompany;
+        private System.Windows.Forms.TextBox txtPosition;
+        private System.Windows.Forms.TextBox txtDuration;
     }
 }

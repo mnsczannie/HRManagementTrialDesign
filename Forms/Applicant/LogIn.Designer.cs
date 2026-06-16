@@ -54,7 +54,7 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.textBox12 = new System.Windows.Forms.TextBox();
-            this.Dashboard = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
@@ -359,18 +359,18 @@
             this.textBox12.TabIndex = 18;
             this.textBox12.Text = "----------------------------------------";
             // 
-            // Dashboard
+            // button1
             // 
-            this.Dashboard.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.Dashboard.Font = new System.Drawing.Font("Patrick Hand", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dashboard.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.Dashboard.Location = new System.Drawing.Point(939, 412);
-            this.Dashboard.Name = "Dashboard";
-            this.Dashboard.Size = new System.Drawing.Size(227, 41);
-            this.Dashboard.TabIndex = 19;
-            this.Dashboard.Text = "Sign In";
-            this.Dashboard.UseVisualStyleBackColor = false;
-            this.Dashboard.Click += new System.EventHandler(this.button1_Click);
+            this.button1.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.button1.Font = new System.Drawing.Font("Patrick Hand", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.button1.Location = new System.Drawing.Point(939, 412);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(227, 41);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Sign In";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox11
             // 
@@ -443,7 +443,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1366, 745);
             this.Controls.Add(this.textBox13);
-            this.Controls.Add(this.Dashboard);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox12);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel1);
@@ -506,7 +506,7 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Button Dashboard;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;

@@ -29,11 +29,57 @@ namespace trial_hr_system.Forms.Applicant
 
         private void Dashboard_Click(object sender, EventArgs e)
         {
-            LogIn login = new LogIn();
-            login.Show();
+            // --- Validation ---
+            if (string.IsNullOrWhiteSpace(txtFullName.Text) ||
+                string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                string.IsNullOrWhiteSpace(txtPassword.Text))
+            { MessageBox.Show("Full name, email and password are required.", "Validation"); return; }
 
-            this.Hide();
+            if (txtPassword.Text != txtConfirmPassword.Text)
+            { MessageBox.Show("Passwords do not match.", "Validation"); return; }
+
+            if (txtPassword.Text.Length < 6)
+            { MessageBox.Show("Password must be at least 6 characters.", "Validation"); return; }
+
+            // --- Save to database ---
+            try
+            {
+                bool success = SystemHelpers.RegisterApplicant(
+                    txtFullName.Text.Trim(),
+                    txtEmail.Text.Trim(),
+                    txtPassword.Text,
+                    txtPhone.Text.Trim(),
+                    txtAddress.Text.Trim(),
+                    dtpBirthdate.Value,
+                    cmbGender.Text,
+                    txtCity.Text.Trim(),
+                    txtProvince.Text.Trim(),
+                    txtZip.Text.Trim(),
+                    txtSchool.Text.Trim(),
+                    txtDegree.Text.Trim(),
+                    txtYearGrad.Text.Trim(),
+                    txtSkills.Text.Trim(),
+                    txtCompany.Text.Trim(),
+                    txtPosition.Text.Trim(),
+                    txtDuration.Text.Trim()
+                );
+
+                if (success)
+                {
+                    MessageBox.Show("Account created successfully! You may now log in.",
+                        "Registration Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LogIn login = new LogIn();
+                    login.Show();
+                    this.Hide();
+                }
+                else
+                { MessageBox.Show("Registration failed. Email may already be in use.", "Error"); }
+            }
+            catch (Exception ex)
+            { MessageBox.Show("Error: " + ex.Message, "Database Error"); }
         }
+
+        
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

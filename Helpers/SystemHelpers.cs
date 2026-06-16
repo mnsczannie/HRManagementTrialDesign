@@ -7,6 +7,7 @@ namespace trial_hr_system
 {
     public static class SystemHelpers
     {
+
         // =============================================
         // CONNECTION STRING
         // =============================================
@@ -498,6 +499,48 @@ namespace trial_hr_system
                 }
             }
             return dt;
+        }
+        /// <summary>
+        /// After application is submitted, create missing document entries
+        /// for all requirements attached to the vacancy.
+        /// </summary>
+        public static void InitializeMissingDocuments(int applicantId, int vacancyId)
+        {
+            var reqs = ExecuteQuery(
+                "SELECT req_type_id FROM vacancy_requirements WHERE vacancy_id = @vid",
+                new SqlParameter("@vid", vacancyId));
+
+            foreach (DataRow row in reqs.Rows)
+            {
+                int reqTypeId = Convert.ToInt32(row["req_type_id"]);
+                // Only insert if not already there
+                var exists = ExecuteQuery(
+                    "SELECT 1 FROM applicant_documents WHERE applicant_id=@aid AND req_type_id=@rid",
+                    new SqlParameter("@aid", applicantId),
+                    new SqlParameter("@rid", reqTypeId));
+                if (exists.Rows.Count == 0)
+                {
+                    ExecuteNonQuery(
+                        @"INSERT INTO applicant_documents
+                  (applicant_id, req_type_id, file_path, status, uploaded_at)
+                  VALUES (@aid, @rid, NULL, 'missing', NULL)",
+                        new SqlParameter("@aid", applicantId),
+                        new SqlParameter("@rid", reqTypeId));
+                }
+            }
+        }
+        /// <summary>
+        /// Returns true if the application is locked for editing.
+        /// Locked when status is no longer draft or submitted.
+        /// </summary>
+        public static bool IsApplicationLocked(int applicationId)
+        {
+            var dt = ExecuteQuery(
+                "SELECT status FROM applications WHERE application_id = @id",
+                new SqlParameter("@id", applicationId));
+            if (dt.Rows.Count == 0) return true;
+            string status = dt.Rows[0]["status"].ToString();
+            return status != "draft" && status != "submitted";
         }
 
         private static bool ExecuteNonQuery(string query, params SqlParameter[] parameters)

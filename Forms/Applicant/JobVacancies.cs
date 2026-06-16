@@ -16,6 +16,68 @@ namespace trial_hr_system.Forms.Applicant
         {
             InitializeComponent();
         }
+        private void JobVacancies_Load(object sender, EventArgs e)
+        {
+            LoadVacancies();
+        }
+
+        private void LoadVacancies()
+        {
+            var dt = SystemHelpers.GetOpenVacancies();
+            dgvVacancies.DataSource = dt;
+            dgvVacancies.ReadOnly = true;
+            dgvVacancies.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvVacancies.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            if (dgvVacancies.SelectedRows.Count == 0)
+            { MessageBox.Show("Select a vacancy first.", "Apply"); return; }
+
+            int vacancyId = Convert.ToInt32(dgvVacancies.SelectedRows[0].Cells["vacancy_id"].Value);
+
+            // Check for duplicate (enforced by DB UNIQUE constraint too)
+            var existing = SystemHelpers.GetApplicationsByApplicant(SystemHelpers.CurrentApplicantId);
+            foreach (DataRow row in existing.Rows)
+            {
+                if (Convert.ToInt32(row["vacancy_id"]) == vacancyId)
+                {
+                    MessageBox.Show(
+                        "You have already applied for this position.\n" +
+                        "Duplicate applications are not allowed.",
+                        "Duplicate Application",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
+            var confirm = MessageBox.Show("Submit your application for this position?",
+                "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm != DialogResult.Yes) return;
+
+            try
+            {
+                bool ok = SystemHelpers.SubmitApplication(vacancyId);
+                if (ok)
+                {
+                    // Auto-log submitted documents as missing for this vacancy
+                    SystemHelpers.InitializeMissingDocuments(SystemHelpers.CurrentApplicantId, vacancyId);
+                    SystemHelpers.LogAction("SUBMIT_APPLICATION", "applications", vacancyId);
+                    MessageBox.Show("Application submitted successfully!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadVacancies();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Catch duplicate constraint from SQL
+                if (ex.Message.Contains("no_duplicate") || ex.Message.Contains("UNIQUE"))
+                    MessageBox.Show("You have already applied for this position.", "Duplicate");
+                else
+                    MessageBox.Show("Error: " + ex.Message, "Error");
+            }
+        }
 
         private void button3_Click(object sender, EventArgs e)
         {

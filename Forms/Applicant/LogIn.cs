@@ -84,10 +84,25 @@ namespace trial_hr_system
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Dashboard dash = new Dashboard();
-            dash.Show();   
+            {
+                string email = txtEmail.Text.Trim();
+                string password = txtPassword.Text;
+                if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+                { MessageBox.Show("Enter your email and password.", "Login"); return; }
 
-            this.Hide();
+                if (SystemHelpers.LoginApplicant(email, password))
+                {
+                    Dashboard dash = new Dashboard();
+                    dash.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid email or password.", "Login Failed",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
