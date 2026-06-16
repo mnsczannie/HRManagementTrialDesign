@@ -46,17 +46,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Applicant\ApplicationStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Applicant\ApplicationStatus.Designer.cs">
+      <DependentUpon>ApplicationStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Applicant\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Applicant\Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Applicant\JobVacancies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Applicant\JobVacancies.Designer.cs">
+      <DependentUpon>JobVacancies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Applicant\LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Applicant\LogIn.Designer.cs">
       <DependentUpon>LogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Applicant\MyApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Applicant\MyApplication.Designer.cs">
+      <DependentUpon>MyApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Applicant\MyDocuments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Applicant\MyDocuments.Designer.cs">
+      <DependentUpon>MyDocuments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Applicant\MyProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Applicant\MyProfile.Designer.cs">
+      <DependentUpon>MyProfile.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Applicant\Register.cs">
       <SubType>Form</SubType>
@@ -78,8 +108,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Applicant\ApplicationStatus.resx">
+      <DependentUpon>ApplicationStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Applicant\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Applicant\JobVacancies.resx">
+      <DependentUpon>JobVacancies.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Applicant\LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Applicant\MyApplication.resx">
+      <DependentUpon>MyApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Applicant\MyDocuments.resx">
+      <DependentUpon>MyDocuments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Applicant\MyProfile.resx">
+      <DependentUpon>MyProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Applicant\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>

@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace trial_hr_system.Forms.Applicant
 {
-    public partial class Dashboard : Form
+    public partial class MyDocuments : Form
     {
-        public Dashboard()
+        public MyDocuments()
         {
             InitializeComponent();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Dashboard dash = new Dashboard();
+            dash.Show();
+
+            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -33,24 +41,6 @@ namespace trial_hr_system.Forms.Applicant
             this.Hide();
         }
 
-        private void lblUserRole_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            LogIn login = new LogIn();
-            login.Show();
-
-            this.Hide();
-        }
-
-        private void lblTime_Click(object sender, EventArgs e)
-        {
-            lblTime.Text = DateTime.Now.ToString("MMM dd, yyyy | hh:mm:ss tt");
-        }
-
         private void button5_Click(object sender, EventArgs e)
         {
             ApplicationStatus dash = new ApplicationStatus();
@@ -61,16 +51,16 @@ namespace trial_hr_system.Forms.Applicant
 
         private void button6_Click(object sender, EventArgs e)
         {
-           MyProfile dash = new MyProfile();
+            MyProfile dash = new MyProfile();
             dash.Show();
 
             this.Hide();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void button9_Click(object sender, EventArgs e)
         {
-            MyDocuments dash = new MyDocuments();
-            dash.Show();
+            LogIn login = new LogIn();
+            login.Show();
 
             this.Hide();
         }
