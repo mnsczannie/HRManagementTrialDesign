@@ -80,6 +80,7 @@
             this.lblTime.Size = new System.Drawing.Size(95, 36);
             this.lblTime.TabIndex = 29;
             this.lblTime.Text = "lblTime";
+            this.lblTime.Click += new System.EventHandler(this.lblTime_Click);
             // 
             // button8
             // 
@@ -164,9 +165,9 @@
             this.textBox4.Font = new System.Drawing.Font("Amatic SC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.Location = new System.Drawing.Point(13, 6);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(164, 41);
+            this.textBox4.Size = new System.Drawing.Size(196, 41);
             this.textBox4.TabIndex = 26;
-            this.textBox4.Text = "DASHBOARD";
+            this.textBox4.Text = "APPLICATION STATUS";
             // 
             // panel4
             // 

@@ -64,5 +64,10 @@ namespace trial_hr_system.Forms.Applicant
 
             this.Hide();
         }
+
+        private void lblTime_Click(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString("MMM dd, yyyy | hh:mm:ss tt");
+        }
     }
 }
