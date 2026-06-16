@@ -64,6 +64,7 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
+            this.btnSeedUsers_Click = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -477,6 +478,16 @@
             this.textBox14.TabIndex = 42;
             this.textBox14.Text = "EMAIL ADDRESS";
             // 
+            // btnSeedUsers_Click
+            // 
+            this.btnSeedUsers_Click.Location = new System.Drawing.Point(467, 68);
+            this.btnSeedUsers_Click.Name = "btnSeedUsers_Click";
+            this.btnSeedUsers_Click.Size = new System.Drawing.Size(75, 23);
+            this.btnSeedUsers_Click.TabIndex = 47;
+            this.btnSeedUsers_Click.Text = "button1";
+            this.btnSeedUsers_Click.UseVisualStyleBackColor = true;
+            this.btnSeedUsers_Click.Click += new System.EventHandler(this.btnCreateAdmin_Click_Click);
+            // 
             // HRLogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -485,6 +496,7 @@
             this.BackgroundImage = global::trial_hr_system.Properties.Resources.spiral1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.btnSeedUsers_Click);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.textBox10);
@@ -564,5 +576,6 @@
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.Button btnSeedUsers_Click;
     }
 }
