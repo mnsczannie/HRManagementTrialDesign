@@ -7,15 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using trial_hr_system.Forms.Applicant;
-using trial_hr_system.Forms.Maintenance;
-using trial_hr_system.Forms;
+using trial_hr_system.Forms.HR;
 
-namespace trial_hr_system.Forms.HR
+namespace trial_hr_system.Forms.Maintenance
 {
-    public partial class HRDashboard : Form
+    public partial class HiringDecision : Form
     {
-        public HRDashboard()
+        public HiringDecision()
         {
             InitializeComponent();
         }
@@ -28,17 +26,17 @@ namespace trial_hr_system.Forms.HR
             this.Hide();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-            Reports dash = new Reports();
+            VacancyManagement dash = new VacancyManagement();
             dash.Show();
 
             this.Hide();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
-            VacancyManagement dash = new VacancyManagement();
+            Reports dash = new Reports();
             dash.Show();
 
             this.Hide();

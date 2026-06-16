@@ -94,6 +94,12 @@
     <Compile Include="Forms\Applicant\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\HR\ApplicantReview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\ApplicantReview.Designer.cs">
+      <DependentUpon>ApplicantReview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HR\HRDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +111,48 @@
     </Compile>
     <Compile Include="Forms\HR\HRLogIn.Designer.cs">
       <DependentUpon>HRLogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\InterviewEvaluation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\InterviewEvaluation.Designer.cs">
+      <DependentUpon>InterviewEvaluation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\InterviewSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\InterviewSchedule.Designer.cs">
+      <DependentUpon>InterviewSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\Screening.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\Screening.Designer.cs">
+      <DependentUpon>Screening.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintenance\HiringDecision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\HiringDecision.Designer.cs">
+      <DependentUpon>HiringDecision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintenance\HRMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\HRMaintenance.Designer.cs">
+      <DependentUpon>HRMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintenance\Reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintenance\VacancyManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\VacancyManagement.Designer.cs">
+      <DependentUpon>VacancyManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -132,8 +180,35 @@
     <EmbeddedResource Include="Forms\Applicant\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\ApplicantReview.resx">
+      <DependentUpon>ApplicantReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\HRDashboard.resx">
+      <DependentUpon>HRDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\HR\HRLogIn.resx">
       <DependentUpon>HRLogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\InterviewEvaluation.resx">
+      <DependentUpon>InterviewEvaluation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\InterviewSchedule.resx">
+      <DependentUpon>InterviewSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\Screening.resx">
+      <DependentUpon>Screening.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\HiringDecision.resx">
+      <DependentUpon>HiringDecision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\HRMaintenance.resx">
+      <DependentUpon>HRMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\Reports.resx">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\VacancyManagement.resx">
+      <DependentUpon>VacancyManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -145,6 +220,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Forms\Maintenance\maintenance" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -158,9 +234,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\Maintenance\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\503e119b-51dc-4328-84cd-80695c148844.jpg" />
   </ItemGroup>
