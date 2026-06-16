@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using trial_hr_system.Forms.Applicant;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace trial_hr_system.Forms.HR
 {
@@ -45,29 +46,33 @@ namespace trial_hr_system.Forms.HR
             string email = txtEmail.Text;
             string password = txtPassword.Text;
             {
-            // Check credentials from database
+                Check credentials from database
 
- //           if (ValidLogin(email, password))
-         //   {
-            //    if (selectedRole == "Admin")
-             //   {
-           //         AdminDashboard admin = new AdminDashboard();
-            //        admin.Show();
-             //   }
-             //   else if (selectedRole == "HRStaff")
-             //   {
-               //     HRDashboard hr = new HRDashboard();
-             //       hr.Show();
-            //    }
-              //  else if (selectedRole == "Manager")
-           //     {
-            //        ManagerDashboard manager = new ManagerDashboard();
-            //        manager.Show();
-             //   }
+                if (ValidLogin(email, password))
+                {
+                    if (selectedRole == "Admin")
+                    {
+                        HRDashboard admin = new HRDashboard();
+                        admin.Show();
+                    }
+                    else if (selectedRole == "HRStaff")
+                    {
+                        HRDashboard hr = new HRDashboard();
+                        hr.Show();
+                    }
+                    else if (selectedRole == "Manager")
+                    {
+                        HRDashboard manager = new HRDashboard();
+                        manager.Show();
+                    }
 
-           //     this.Hide();
+                    this.Hide();
+                }
+
+
+
+
             }
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
