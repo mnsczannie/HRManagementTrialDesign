@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using trial_hr_system.Helpers;
 
 namespace trial_hr_system
 {
@@ -13,7 +14,10 @@ namespace trial_hr_system
             this.applicationId = appId;
             this.Text = $"Final Choice - {applicantName}";
         }
-
+        private void HiringDecision_Load(object sender, EventArgs e)
+        {
+            UIHelper.ScaleControls(this, 1386f, 788f);
+        }
         private void btnFinalize_Click(object sender, EventArgs e)
         {
             string decision = cmbDecision.SelectedItem?.ToString() ?? "Hired";

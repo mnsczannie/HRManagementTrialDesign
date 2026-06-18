@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using trial_hr_system.Forms.HR;
+using trial_hr_system.Helpers;
 
 namespace trial_hr_system.Forms.Maintenance
 {
@@ -22,6 +23,7 @@ namespace trial_hr_system.Forms.Maintenance
 
         private void LoadVacancies()
         {
+            UIHelper.ScaleControls(this, 1386f, 788f);
             var dt = SystemHelpers.GetAllVacancies();
             dgvVacancies.DataSource = dt;
             dgvVacancies.ReadOnly = true;

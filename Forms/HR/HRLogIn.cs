@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using trial_hr_system.Forms.Maintenance;
+using trial_hr_system.Helpers;
 
 namespace trial_hr_system
 {
@@ -9,6 +10,10 @@ namespace trial_hr_system
         public HRLogin()
         {
             InitializeComponent();
+        }
+        private void HRLogIn_Load(object sender, EventArgs e)
+        {
+            UIHelper.ScaleControls(this, 1386f, 788f);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

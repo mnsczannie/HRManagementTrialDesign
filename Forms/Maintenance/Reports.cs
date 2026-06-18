@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using trial_hr_system.Helpers;
 
 namespace trial_hr_system
 {
@@ -12,6 +13,7 @@ namespace trial_hr_system
 
         private void Reports_Load(object sender, EventArgs e)
         {
+            UIHelper.ScaleControls(this, 1386f, 788f);
             // Initialize assigned labels safely to prevent blank values on user view load
             lblUserName.Text = $"User: {SystemHelpers.CurrentUserName}";
             lblUserRole.Text = $"Role: {SystemHelpers.CurrentUserRole}";

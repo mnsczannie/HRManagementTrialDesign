@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using trial_hr_system.Helpers;
 
 namespace trial_hr_system.Forms.Applicant
 {
@@ -18,6 +19,7 @@ namespace trial_hr_system.Forms.Applicant
         }
         private void JobVacancies_Load(object sender, EventArgs e)
         {
+            UIHelper.ScaleControls(this, 1386f, 788f);
             LoadVacancies();
         }
 

@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using trial_hr_system.Helpers;
 
 namespace trial_hr_system.Forms.Applicant
 {
@@ -15,6 +16,7 @@ namespace trial_hr_system.Forms.Applicant
 
         private void MyDocuments_Load(object sender, EventArgs e)
         {
+            UIHelper.ScaleControls(this, 1386f, 788f);
             lblUserName.Text = SystemHelpers.CurrentUserName;
             lblUserRole.Text = SystemHelpers.CurrentUserRole?.ToUpper() ?? "APPLICANT";
             lblTime.Text = DateTime.Now.ToString("MMM dd, yyyy | hh:mm:ss tt");

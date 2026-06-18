@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using trial_hr_system.Helpers;
 
 namespace trial_hr_system
 {
@@ -13,7 +14,10 @@ namespace trial_hr_system
             this.applicationId = appId;
             this.Text = $"Screening Assessment - {applicantName}";
         }
-
+        private void Screening_Load(object sender, EventArgs e)
+        {
+            UIHelper.ScaleControls(this, 1386f, 788f);
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             string result = cmbResult.SelectedItem?.ToString() ?? "Passed";

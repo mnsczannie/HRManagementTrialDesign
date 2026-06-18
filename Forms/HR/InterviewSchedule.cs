@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using trial_hr_system.Helpers;
 
 namespace trial_hr_system
 {
@@ -16,6 +17,7 @@ namespace trial_hr_system
 
         private void InterviewSchedule_Load(object sender, EventArgs e)
         {
+            UIHelper.ScaleControls(this, 1386f, 788f);
             try
             {
                 cmbType.DisplayMember = "label";

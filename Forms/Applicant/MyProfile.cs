@@ -2,6 +2,7 @@
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using trial_hr_system.Helpers;
 
 namespace trial_hr_system.Forms.Applicant
 {
@@ -19,6 +20,7 @@ namespace trial_hr_system.Forms.Applicant
 
         private void MyProfile_Load(object sender, EventArgs e)
         {
+            UIHelper.ScaleControls(this, 1386f, 788f);
             // SAFETY CHECK
             if (SystemHelpers.CurrentApplicantId <= 0)
             {

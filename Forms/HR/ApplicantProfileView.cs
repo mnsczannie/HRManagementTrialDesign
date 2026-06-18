@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using trial_hr_system.Helpers;
 
 namespace trial_hr_system.Forms.HR
 {
@@ -13,7 +14,10 @@ namespace trial_hr_system.Forms.HR
             _applicantId = applicantId;
             InitializeProfileView();
         }
-
+        private void ApplicantProfileView_Load(object sender, EventArgs e)
+        {
+            UIHelper.ScaleControls(this, 1386f, 788f);
+        }
         private void InitializeProfileView()
         {
             this.Text = "Applicant Profile";

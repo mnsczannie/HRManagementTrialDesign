@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using trial_hr_system.Helpers;
 
 namespace trial_hr_system.Forms.Maintenance
 {
@@ -9,7 +10,10 @@ namespace trial_hr_system.Forms.Maintenance
         private int _vacancyId;
         private TextBox txtJobTitle, txtDepartment, txtDescription, txtQualifications, txtRequiredDocs;
         private NumericUpDown numSlots;
-
+        private void VacancyForm_Load(object sender, EventArgs e)
+        {
+            UIHelper.ScaleControls(this, 1386f, 788f);
+        }
         public string JobTitle => txtJobTitle.Text.Trim();
         public string Department => txtDepartment.Text.Trim();
         public string Description => txtDescription.Text.Trim();

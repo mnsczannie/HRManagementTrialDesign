@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using trial_hr_system.Helpers;
 
 namespace trial_hr_system.Forms.Applicant
 {
@@ -14,23 +15,13 @@ namespace trial_hr_system.Forms.Applicant
         // ── FORM LOAD ────────────────────────────────────────────────────────
         private void Register_Load(object sender, EventArgs e)
         {
+            UIHelper.ScaleControls(this, 1386f, 788f);
             // FIX #1: Populate gender dropdown (was empty in Designer)
             cmbGender.Items.Clear();
             cmbGender.Items.AddRange(new string[] { "Male", "Female", "Prefer not to say" });
             cmbGender.SelectedIndex = 0;
 
-            // FIX #2: Clear Designer placeholder text from input fields
-            txtAddress.Clear();
-            txtCity.Clear();
-            txtProvince.Clear();
-            txtZip.Clear();
-            txtSchool.Clear();
-            txtDegree.Clear();
-            txtYearGrad.Clear();
-            txtSkills.Clear();
-            txtCompany.Clear();
-            txtPosition.Clear();
-            txtDuration.Clear();
+
 
             lblTime.Text = DateTime.Now.ToString("MMM dd, yyyy | hh:mm:ss tt");
         }
@@ -48,8 +39,6 @@ namespace trial_hr_system.Forms.Applicant
             if (string.IsNullOrWhiteSpace(txtPhone.Text))
             { MessageBox.Show("Phone number is required.", "Validation"); return; }
 
-            if (string.IsNullOrWhiteSpace(txtAddress.Text))
-            { MessageBox.Show("Address is required.", "Validation"); return; }
 
             if (string.IsNullOrWhiteSpace(txtPassword.Text))
             { MessageBox.Show("Password is required.", "Validation"); return; }
@@ -69,19 +58,9 @@ namespace trial_hr_system.Forms.Applicant
                     txtEmail.Text.Trim(),
                     txtPassword.Text,
                     txtPhone.Text.Trim(),
-                    txtAddress.Text.Trim(),
                     dtpBirthdate.Value,
-                    cmbGender.Text,
-                    txtCity.Text.Trim(),
-                    txtProvince.Text.Trim(),
-                    txtZip.Text.Trim(),
-                    txtSchool.Text.Trim(),
-                    txtDegree.Text.Trim(),
-                    txtYearGrad.Text.Trim(),
-                    txtSkills.Text.Trim(),
-                    txtCompany.Text.Trim(),
-                    txtPosition.Text.Trim(),
-                    txtDuration.Text.Trim()
+                    cmbGender.Text
+                
                 );
 
                 if (success)

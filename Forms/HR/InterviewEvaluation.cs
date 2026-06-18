@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using trial_hr_system.Helpers;
 
 namespace trial_hr_system
 {
@@ -14,6 +15,10 @@ namespace trial_hr_system
             this.applicationId = appId;
             this.scheduleId = schedId;
             this.Text = $"Evaluate: {applicantName}";
+        }
+        private void InterviewEvaluation_Load(object sender, EventArgs e)
+        {
+            UIHelper.ScaleControls(this, 1386f, 788f);
         }
 
         private void btnSave_Click(object sender, EventArgs e)

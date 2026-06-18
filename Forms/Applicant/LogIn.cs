@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using trial_hr_system.Forms.Applicant;
 using trial_hr_system.Forms.HR;
+using trial_hr_system.Helpers;
 
 namespace trial_hr_system
 {
@@ -19,13 +20,11 @@ namespace trial_hr_system
         {
             InitializeComponent();
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void LogIn_Load(object sender, EventArgs e)
+        {
+            UIHelper.ScaleControls(this, 1386f, 788f);
+        }
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
