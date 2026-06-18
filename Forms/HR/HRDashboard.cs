@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using trial_hr_system.Forms.Applicant;
 using trial_hr_system.Forms.Maintenance;
-using trial_hr_system.Forms;
 
 namespace trial_hr_system.Forms.HR
 {
@@ -20,49 +11,34 @@ namespace trial_hr_system.Forms.HR
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void HRDashboard_Load(object sender, EventArgs e)
         {
-            ApplicantReview dash = new ApplicantReview();
-            dash.Show();
-
-            this.Hide();
+            lblUserName.Text = SystemHelpers.CurrentUserName;
+            lblUserRole.Text = SystemHelpers.CurrentUserRole?.ToUpper() ?? "HR";
+            lblTime.Text = DateTime.Now.ToString("MMM dd, yyyy | hh:mm:ss tt");
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            Reports dash = new Reports();
-            dash.Show();
-
-            this.Hide();
+            lblTime.Text = DateTime.Now.ToString("MMM dd, yyyy | hh:mm:ss tt");
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) { /* Already on dashboard */ }
+        private void button3_Click(object sender, EventArgs e) { new ApplicantReview().Show(); this.Hide(); }
+        private void button4_Click(object sender, EventArgs e) { new VacancyManagement().Show(); this.Hide(); }
+        private void button5_Click(object sender, EventArgs e) { new Reports().Show(); this.Hide(); }
+        private void button6_Click(object sender, EventArgs e) { new HRMaintenance().Show(); this.Hide(); }
+
+        private void button9_Click(object sender, EventArgs e)
         {
-            VacancyManagement dash = new VacancyManagement();
-            dash.Show();
-
-            this.Hide();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            HRMaintenance dash = new HRMaintenance();
-            dash.Show();
-
+            SystemHelpers.Logout();
+            new HRLogin().Show();
             this.Hide();
         }
 
         private void lblTime_Click(object sender, EventArgs e)
         {
             lblTime.Text = DateTime.Now.ToString("MMM dd, yyyy | hh:mm:ss tt");
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            HRLogIn login = new HRLogIn();
-            login.Show();
-
-            this.Hide();
         }
     }
 }

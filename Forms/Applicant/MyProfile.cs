@@ -1,57 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using trial_hr_system.Forms.Applicant;
+
 namespace trial_hr_system.Forms.Applicant
 {
     public partial class MyProfile : Form
     {
-
         public MyProfile()
         {
             InitializeComponent();
         }
-        private void MyProfile_Load(object sender, EventArgs e)
+
+        private void buttonDebug_Click(object sender, EventArgs e)
         {
-            LoadProfile();
-            CheckEditLock();
+            SystemHelpers.DebugSession();
         }
 
-        private void CheckEditLock()
+        private void MyProfile_Load(object sender, EventArgs e)
         {
-            // Check if any of the applicant's applications are under review or beyond
-            var apps = SystemHelpers.GetApplicationsByApplicant(SystemHelpers.CurrentApplicantId);
-            bool locked = false;
-            foreach (DataRow row in apps.Rows)
+            // SAFETY CHECK
+            if (SystemHelpers.CurrentApplicantId <= 0)
             {
-                string s = row["status"].ToString();
-                if (s != "draft" && s != "submitted") { locked = true; break; }
+                MessageBox.Show("No logged-in applicant detected.");
+                this.Close();
+                return;
             }
 
-            if (locked)
-            {
-                // Disable all editable controls
-                foreach (Control c in this.Controls)
-                    if (c is TextBox || c is ComboBox || c is DateTimePicker)
-                        c.Enabled = false;
-                btnSaveProfile.Enabled = false;
-                lblLockNotice.Visible = true;
-                lblLockNotice.Text = "Your profile is locked while your application is under HR review.";
-                lblLockNotice.ForeColor = Color.Red;
-            }
+            LoadProfile();
+            CheckEditLock();
+
+            lblTime.Text = DateTime.Now.ToString("MMM dd, yyyy | hh:mm:ss tt");
         }
 
         private void LoadProfile()
         {
             var dt = SystemHelpers.GetApplicantById(SystemHelpers.CurrentApplicantId);
-            if (dt.Rows.Count == 0) return;
+
+            if (dt == null || dt.Rows.Count == 0)
+            {
+                MessageBox.Show("Profile not found.");
+                return;
+            }
+
             DataRow r = dt.Rows[0];
+
             txtFullName.Text = r["full_name"].ToString();
             txtEmail.Text = r["email"].ToString();
             txtPhone.Text = r["phone"].ToString();
@@ -66,59 +59,134 @@ namespace trial_hr_system.Forms.Applicant
             txtCompany.Text = r["company"].ToString();
             txtPosition.Text = r["position"].ToString();
             txtDuration.Text = r["duration"].ToString();
+
             if (r["birthdate"] != DBNull.Value)
                 dtpBirthdate.Value = Convert.ToDateTime(r["birthdate"]);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void CheckEditLock()
         {
-            JobVacancies dash = new JobVacancies();
-            dash.Show();
+            var apps = SystemHelpers.GetApplicationsByApplicant(SystemHelpers.CurrentApplicantId);
 
-            this.Hide();
+            // Null guard — prevents NullReferenceException if query returns nothing
+            if (apps == null) return;
+
+            bool locked = false;
+
+            foreach (DataRow row in apps.Rows)
+            {
+                string status = row["status"].ToString();
+
+                if (status != "draft" && status != "submitted")
+                {
+                    locked = true;
+                    break;
+                }
+            }
+
+            if (locked)
+            {
+                // Recursive disable — covers controls nested inside panels/groupboxes
+                SetControlsEnabled(this, false);
+
+                btnSaveProfile.Enabled = false;
+
+                lblLockNotice.Visible = true;
+                lblLockNotice.Text = "Your profile is locked while your application is under HR review.";
+                lblLockNotice.ForeColor = Color.Red;
+            }
         }
+
+        // Walks the full control tree so nested panels are handled correctly
+        private void SetControlsEnabled(Control parent, bool enabled)
+        {
+            foreach (Control c in parent.Controls)
+            {
+                if (c is TextBox || c is ComboBox || c is DateTimePicker)
+                    c.Enabled = enabled;
+
+                if (c.HasChildren)
+                    SetControlsEnabled(c, enabled);
+            }
+        }
+
+        private void btnSaveProfile_Click(object sender, EventArgs e)
+        {
+            if (SystemHelpers.CurrentApplicantId <= 0)
+            {
+                MessageBox.Show("Session error. Please log in again.");
+                return;
+            }
+
+            bool success = SystemHelpers.UpdateApplicantProfile(
+                SystemHelpers.CurrentApplicantId,
+                txtFullName.Text.Trim(),
+                txtEmail.Text.Trim(),
+                txtPhone.Text.Trim(),
+                txtAddress.Text.Trim(),
+                txtCity.Text.Trim(),
+                txtProvince.Text.Trim(),
+                txtZip.Text.Trim(),
+                dtpBirthdate.Value,
+                txtSchool.Text.Trim(),
+                txtDegree.Text.Trim(),
+                txtYearGrad.Text.Trim(),
+                txtSkills.Text.Trim(),
+                txtCompany.Text.Trim(),
+                txtPosition.Text.Trim(),
+                txtDuration.Text.Trim()
+            );
+
+            if (success)
+                MessageBox.Show("Profile saved successfully.", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("Failed to save profile. Please try again.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        // ── NAVIGATION BUTTONS ───────────────────────────────────────────────
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Dashboard dash = new Dashboard();
-            dash.Show();
+            new Dashboard().Show();
+            this.Hide();
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            new JobVacancies().Show();
             this.Hide();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            MyApplication dash = new MyApplication();
-            dash.Show();
-
+            new MyApplication().Show();
             this.Hide();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            ApplicationStatus dash = new ApplicationStatus();
-            dash.Show();
-
+            new ApplicationStatus().Show();
             this.Hide();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            MyDocuments dash = new MyDocuments();
-            dash.Show();
-
+            new MyDocuments().Show();
             this.Hide();
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            LogIn login = new LogIn();
-            login.Show();
-
+            SystemHelpers.Logout();
+            new LogIn().Show();
             this.Hide();
         }
 
-        private void lblTime_Click(object sender, EventArgs e)
+        // ── LIVE CLOCK ───────────────────────────────────────────────────────
+
+        private void timer1_Tick(object sender, EventArgs e)
         {
             lblTime.Text = DateTime.Now.ToString("MMM dd, yyyy | hh:mm:ss tt");
         }

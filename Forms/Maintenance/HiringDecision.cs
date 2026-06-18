@@ -1,66 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using trial_hr_system.Forms.HR;
 
-namespace trial_hr_system.Forms.Maintenance
+namespace trial_hr_system
 {
-    public partial class HiringDecision : Form
+    public partial class HiringDecisions : Form
     {
-        public HiringDecision()
+        private int applicationId;
+
+        public HiringDecisions(int appId, string applicantName)
         {
             InitializeComponent();
+            this.applicationId = appId;
+            this.Text = $"Final Choice - {applicantName}";
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnFinalize_Click(object sender, EventArgs e)
         {
-            ApplicantReview dash = new ApplicantReview();
-            dash.Show();
+            string decision = cmbDecision.SelectedItem?.ToString() ?? "Hired";
+            string remarks = txtRemarks.Text.Trim();
 
-            this.Hide();
-        }
+            if (SystemHelpers.SaveHiringDecision(applicationId, decision, remarks))
+            {
+                string globalAppStatus = (decision == "Hired") ? "offered" : "rejected";
+                SystemHelpers.UpdateApplicationStatus(applicationId, globalAppStatus, $"Executive Action: {decision}");
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            VacancyManagement dash = new VacancyManagement();
-            dash.Show();
-
-            this.Hide();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Reports dash = new Reports();
-            dash.Show();
-
-            this.Hide();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            HRMaintenance dash = new HRMaintenance();
-            dash.Show();
-
-            this.Hide();
-        }
-
-        private void lblTime_Click(object sender, EventArgs e)
-        {
-            lblTime.Text = DateTime.Now.ToString("MMM dd, yyyy | hh:mm:ss tt");
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            HRLogIn login = new HRLogIn();
-            login.Show();
-
-            this.Hide();
+                MessageBox.Show("Final determination applied to profile status.", "Process Terminated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
     }
 }

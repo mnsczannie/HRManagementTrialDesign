@@ -445,8 +445,9 @@
             // 
             // dgvVacancies
             // 
+            this.dgvVacancies.AllowUserToOrderColumns = true;
             this.dgvVacancies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVacancies.Location = new System.Drawing.Point(444, 126);
+            this.dgvVacancies.Location = new System.Drawing.Point(482, 206);
             this.dgvVacancies.Name = "dgvVacancies";
             this.dgvVacancies.Size = new System.Drawing.Size(240, 150);
             this.dgvVacancies.TabIndex = 34;

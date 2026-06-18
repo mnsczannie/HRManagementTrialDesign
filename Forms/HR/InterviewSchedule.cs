@@ -1,66 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using trial_hr_system.Forms.Maintenance;
 
-namespace trial_hr_system.Forms.HR
+namespace trial_hr_system
 {
     public partial class InterviewSchedule : Form
     {
-        public InterviewSchedule()
+        private int applicationId;
+
+        public InterviewSchedule(int appId, string applicantName)
         {
             InitializeComponent();
+            this.applicationId = appId;
+            this.Text = $"Schedule Interview - {applicantName}";
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void InterviewSchedule_Load(object sender, EventArgs e)
         {
-            ApplicantReview dash = new ApplicantReview();
-            dash.Show();
-
-            this.Hide();
+            try
+            {
+                cmbType.DisplayMember = "label";
+                cmbType.ValueMember = "interview_type_id";
+                cmbType.DataSource = SystemHelpers.GetInterviewTypes();
+            }
+            catch { }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnSchedule_Click(object sender, EventArgs e)
         {
-            VacancyManagement dash = new VacancyManagement();
-            dash.Show();
+            if (cmbType.SelectedValue == null) return;
 
-            this.Hide();
-        }
+            int typeId = Convert.ToInt32(cmbType.SelectedValue);
+            DateTime date = dtpDate.Value;
+            TimeSpan time = dtpTime.Value.TimeOfDay;
+            string location = txtLocation.Text.Trim();
+            int defaultInterviewerId = 1;
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Reports dash = new Reports();
-            dash.Show();
-
-            this.Hide();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            HRMaintenance dash = new HRMaintenance();
-            dash.Show();
-
-            this.Hide();
-        }
-
-        private void lblTime_Click(object sender, EventArgs e)
-        {
-            lblTime.Text = DateTime.Now.ToString("MMM dd, yyyy | hh:mm:ss tt");
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            HRLogIn login = new HRLogIn();
-            login.Show();
-
-            this.Hide();
+            if (SystemHelpers.ScheduleInterview(applicationId, defaultInterviewerId, typeId, date, time, location))
+            {
+                SystemHelpers.UpdateApplicationStatus(applicationId, "interview_scheduled", "Interview setup verified.");
+                MessageBox.Show("Interview has been scheduled successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
     }
 }

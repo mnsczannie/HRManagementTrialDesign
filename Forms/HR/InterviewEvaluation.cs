@@ -1,66 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using trial_hr_system.Forms.Maintenance;
 
-namespace trial_hr_system.Forms.HR
+namespace trial_hr_system
 {
     public partial class InterviewEvaluation : Form
     {
-        public InterviewEvaluation()
+        private int applicationId;
+        private int scheduleId;
+
+        public InterviewEvaluation(int appId, int schedId, string applicantName)
         {
             InitializeComponent();
+            this.applicationId = appId;
+            this.scheduleId = schedId;
+            this.Text = $"Evaluate: {applicantName}";
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            ApplicantReview dash = new ApplicantReview();
-            dash.Show();
+            decimal score = numScore.Value;
+            string remarks = txtRemarks.Text.Trim();
+            string result = cmbResult.SelectedItem?.ToString() ?? "Passed";
+            string recommendation = txtRec.Text.Trim();
 
-            this.Hide();
-        }
+            if (SystemHelpers.SaveEvaluation(scheduleId, applicationId, score, remarks, result, recommendation))
+            {
+                SystemHelpers.UpdateInterviewStatus(scheduleId, "completed");
+                SystemHelpers.UpdateApplicationStatus(applicationId, "evaluated", $"Scored: {score}");
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            VacancyManagement dash = new VacancyManagement();
-            dash.Show();
-
-            this.Hide();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Reports dash = new Reports();
-            dash.Show();
-
-            this.Hide();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            HRMaintenance dash = new HRMaintenance();
-            dash.Show();
-
-            this.Hide();
-        }
-
-        private void lblTime_Click(object sender, EventArgs e)
-        {
-            lblTime.Text = DateTime.Now.ToString("MMM dd, yyyy | hh:mm:ss tt");
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            HRLogIn login = new HRLogIn();
-            login.Show();
-
-            this.Hide();
+                MessageBox.Show("Evaluation metrics captured.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
     }
 }

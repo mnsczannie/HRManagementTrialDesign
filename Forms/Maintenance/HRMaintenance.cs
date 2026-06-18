@@ -1,60 +1,124 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using trial_hr_system.Forms.HR;
 
-namespace trial_hr_system.Forms.Maintenance
+namespace trial_hr_system
 {
     public partial class HRMaintenance : Form
     {
+        private int selectedApplicationId = 0;
+        private string selectedApplicantName = "";
+        private int selectedScheduleId = 0;
+
         public HRMaintenance()
         {
             InitializeComponent();
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
+        private void HRMaintenance_Load(object sender, EventArgs e)
         {
-
+            RefreshDashboardData();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void RefreshDashboardData()
         {
+            // Load stats
+            var stats = SystemHelpers.GetDashboardStats();
+            lblMetricApplicants.Text = $"Profiles: {stats["TotalApplicants"]}";
+            lblMetricPending.Text = $"Pending: {stats["PendingApplications"]}";
+            lblMetricInterviews.Text = $"Interviews: {stats["ScheduledInterviews"]}";
 
+            // Load primary data tables
+            dgvApplications.DataSource = SystemHelpers.GetAllApplications();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void dgvApplications_SelectionChanged(object sender, EventArgs e)
         {
-            Reports dash = new Reports();
-            dash.Show();
+            if (dgvApplications.SelectedRows.Count > 0)
+            {
+                var row = dgvApplications.SelectedRows[0];
+                selectedApplicationId = Convert.ToInt32(row.Cells["application_id"].Value);
+                selectedApplicantName = row.Cells["applicant"].Value.ToString();
 
-            this.Hide();
+                lblTargetInfo.Text = $"Working Target Profile ID: {selectedApplicationId} | Name: {selectedApplicantName}";
+
+                // Load interview schedules linked to this specific applicant
+                DataTable dt = SystemHelpers.GetInterviewSchedules(selectedApplicationId);
+                dgvSchedules.DataSource = dt;
+
+                if (dt.Rows.Count > 0)
+                {
+                    selectedScheduleId = Convert.ToInt32(dt.Rows[0]["schedule_id"]);
+                }
+                else
+                {
+                    selectedScheduleId = 0;
+                }
+            }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void dgvSchedules_SelectionChanged(object sender, EventArgs e)
         {
-            HRMaintenance dash = new HRMaintenance();
-            dash.Show();
-
-            this.Hide();
+            if (dgvSchedules.SelectedRows.Count > 0)
+            {
+                selectedScheduleId = Convert.ToInt32(dgvSchedules.SelectedRows[0].Cells["schedule_id"].Value);
+            }
         }
 
-        private void lblTime_Click(object sender, EventArgs e)
+        // ========================================================
+        // POPS OPEN INDIVIDUAL FORM WINDOWS INSTEAD OF TABS
+        // ========================================================
+
+        private void btnOpenScreening_Click(object sender, EventArgs e)
         {
-            lblTime.Text = DateTime.Now.ToString("MMM dd, yyyy | hh:mm:ss tt");
+            if (selectedApplicationId == 0) return;
+
+            using (Screening frm = new Screening(selectedApplicationId, selectedApplicantName))
+            {
+                if (frm.ShowDialog() == DialogResult.OK) RefreshDashboardData();
+            }
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void btnOpenScheduling_Click(object sender, EventArgs e)
         {
-            HRLogIn login = new HRLogIn();
+            if (selectedApplicationId == 0) return;
+
+            using (InterviewSchedule frm = new InterviewSchedule(selectedApplicationId, selectedApplicantName))
+            {
+                if (frm.ShowDialog() == DialogResult.OK) RefreshDashboardData();
+            }
+        }
+
+        private void btnOpenEvaluation_Click(object sender, EventArgs e)
+        {
+            if (selectedApplicationId == 0 || selectedScheduleId == 0)
+            {
+                MessageBox.Show("Please select an active interview row below to evaluate.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using (InterviewEvaluation frm = new InterviewEvaluation(selectedApplicationId, selectedScheduleId, selectedApplicantName))
+            {
+                if (frm.ShowDialog() == DialogResult.OK) RefreshDashboardData();
+            }
+        }
+
+        private void btnOpenHiring_Click(object sender, EventArgs e)
+        {
+            if (selectedApplicationId == 0) return;
+
+            using (HiringDecisions frm = new HiringDecisions(selectedApplicationId, selectedApplicantName))
+            {
+                if (frm.ShowDialog() == DialogResult.OK) RefreshDashboardData();
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            SystemHelpers.Logout();
+            HRLogin login = new HRLogin();
             login.Show();
-
-            this.Hide();
+            this.Close();
         }
     }
 }

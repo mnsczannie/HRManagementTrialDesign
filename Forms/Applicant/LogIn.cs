@@ -84,25 +84,23 @@ namespace trial_hr_system
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string email = txtEmail.Text;
+            string password = txtPassword.Text;
+
+            // This method call updates SystemHelpers.IsApplicantLoggedIn to true!
+            if (SystemHelpers.LoginApplicant(email, password))
             {
-                string email = txtEmail.Text.Trim();
-                string password = txtPassword.Text;
-                if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-                { MessageBox.Show("Enter your email and password.", "Login"); return; }
+                MessageBox.Show("Login Successful!");
 
-                if (SystemHelpers.LoginApplicant(email, password))
-                {
-                    Dashboard dash = new Dashboard();
-                    dash.Show();
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Invalid email or password.", "Login Failed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                // Open your main dashboard form here
+                Dashboard dash = new Dashboard();
+                dash.Show();
+                this.Hide();
             }
-
+            else
+            {
+                MessageBox.Show("Invalid email or password.");
+            }
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -120,7 +118,7 @@ namespace trial_hr_system
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            HRLogIn hrLogin = new HRLogIn();
+            HRLogin hrLogin = new HRLogin();
             hrLogin.Show();
 
             this.Hide();

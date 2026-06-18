@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace trial_hr_system.Forms.Applicant
@@ -17,29 +11,55 @@ namespace trial_hr_system.Forms.Applicant
             InitializeComponent();
         }
 
-        private void textBox14_TextChanged(object sender, EventArgs e)
+        // ── FORM LOAD ────────────────────────────────────────────────────────
+        private void Register_Load(object sender, EventArgs e)
         {
+            // FIX #1: Populate gender dropdown (was empty in Designer)
+            cmbGender.Items.Clear();
+            cmbGender.Items.AddRange(new string[] { "Male", "Female", "Prefer not to say" });
+            cmbGender.SelectedIndex = 0;
 
+            // FIX #2: Clear Designer placeholder text from input fields
+            txtAddress.Clear();
+            txtCity.Clear();
+            txtProvince.Clear();
+            txtZip.Clear();
+            txtSchool.Clear();
+            txtDegree.Clear();
+            txtYearGrad.Clear();
+            txtSkills.Clear();
+            txtCompany.Clear();
+            txtPosition.Clear();
+            txtDuration.Clear();
+
+            lblTime.Text = DateTime.Now.ToString("MMM dd, yyyy | hh:mm:ss tt");
         }
 
-        private void textBox22_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        // ── REGISTER BUTTON ──────────────────────────────────────────────────
         private void Dashboard_Click(object sender, EventArgs e)
         {
-            // --- Validation ---
-            if (string.IsNullOrWhiteSpace(txtFullName.Text) ||
-                string.IsNullOrWhiteSpace(txtEmail.Text) ||
-                string.IsNullOrWhiteSpace(txtPassword.Text))
-            { MessageBox.Show("Full name, email and password are required.", "Validation"); return; }
+            // FIX #3: Comprehensive validation
+            if (string.IsNullOrWhiteSpace(txtFullName.Text))
+            { MessageBox.Show("Full name is required.", "Validation"); return; }
+
+            if (string.IsNullOrWhiteSpace(txtEmail.Text) || !IsValidEmail(txtEmail.Text.Trim()))
+            { MessageBox.Show("A valid email address is required.", "Validation"); return; }
+
+            if (string.IsNullOrWhiteSpace(txtPhone.Text))
+            { MessageBox.Show("Phone number is required.", "Validation"); return; }
+
+            if (string.IsNullOrWhiteSpace(txtAddress.Text))
+            { MessageBox.Show("Address is required.", "Validation"); return; }
+
+            if (string.IsNullOrWhiteSpace(txtPassword.Text))
+            { MessageBox.Show("Password is required.", "Validation"); return; }
+
+            // FIX #4: Match the 8-character hint shown in the UI
+            if (txtPassword.Text.Length < 8)
+            { MessageBox.Show("Password must be at least 8 characters.", "Validation"); return; }
 
             if (txtPassword.Text != txtConfirmPassword.Text)
             { MessageBox.Show("Passwords do not match.", "Validation"); return; }
-
-            if (txtPassword.Text.Length < 6)
-            { MessageBox.Show("Password must be at least 6 characters.", "Validation"); return; }
 
             // --- Save to database ---
             try
@@ -68,33 +88,48 @@ namespace trial_hr_system.Forms.Applicant
                 {
                     MessageBox.Show("Account created successfully! You may now log in.",
                         "Registration Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LogIn login = new LogIn();
-                    login.Show();
+                    new LogIn().Show();
                     this.Hide();
                 }
                 else
-                { MessageBox.Show("Registration failed. Email may already be in use.", "Error"); }
+                {
+                    MessageBox.Show("Registration failed. Email may already be in use.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             catch (Exception ex)
-            { MessageBox.Show("Error: " + ex.Message, "Database Error"); }
+            {
+                MessageBox.Show("Error: " + ex.Message, "Database Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        
-
+        // ── NAVIGATION ───────────────────────────────────────────────────────
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            LogIn login = new LogIn();
-            login.Show();
-
+            new LogIn().Show();
             this.Hide();
         }
 
+        // ── LIVE CLOCK ───────────────────────────────────────────────────────
+        // FIX #5: Match date+time format used across all other forms
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt");
+            lblTime.Text = DateTime.Now.ToString("MMM dd, yyyy | hh:mm:ss tt");
         }
 
-        private void textBox6_TextChanged(object sender, EventArgs e)
+        // ── UNUSED STUBS (kept to satisfy Designer event bindings) ────────────
+        private void textBox14_TextChanged(object sender, EventArgs e) { }
+        private void textBox22_TextChanged(object sender, EventArgs e) { }
+        private void textBox6_TextChanged(object sender, EventArgs e) { }
+
+        // ── HELPER ───────────────────────────────────────────────────────────
+        private bool IsValidEmail(string email)
+        {
+            return Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        }
+
+        private void textBox19_TextChanged(object sender, EventArgs e)
         {
 
         }

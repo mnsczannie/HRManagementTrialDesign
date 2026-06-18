@@ -2,30 +2,15 @@
 {
     partial class Dashboard
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
+            if (disposing && (components != null)) components.Dispose();
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
@@ -69,23 +54,20 @@
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
-            // 
+
             // timer1
-            // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
-            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+
             // panel1
-            // 
             this.panel1.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.panel1.Location = new System.Drawing.Point(4, 8);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(20);
             this.panel1.Size = new System.Drawing.Size(332, 736);
             this.panel1.TabIndex = 23;
-            // 
+
             // panel2
-            // 
             this.panel2.BackColor = System.Drawing.Color.Goldenrod;
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.textBox6);
@@ -105,12 +87,10 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(317, 709);
             this.panel2.TabIndex = 24;
-            // 
-            // button2
-            // 
+
+            // button2 - Dashboard (highlighted)
             this.button2.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.SaddleBrown;
-            this.button2.FlatAppearance.BorderSize = 10;
+            this.button2.FlatAppearance.BorderSize = 0;
             this.button2.Font = new System.Drawing.Font("Patrick Hand", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.Location = new System.Drawing.Point(0, 257);
@@ -121,9 +101,8 @@
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
+
             // textBox6
-            // 
             this.textBox6.BackColor = System.Drawing.Color.Goldenrod;
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox6.Font = new System.Drawing.Font("Patrick Hand", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -133,9 +112,8 @@
             this.textBox6.Size = new System.Drawing.Size(38, 26);
             this.textBox6.TabIndex = 8;
             this.textBox6.Text = "MAIN";
-            // 
+
             // button7
-            // 
             this.button7.BackColor = System.Drawing.Color.Goldenrod;
             this.button7.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -149,9 +127,8 @@
             this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
+
             // button6
-            // 
             this.button6.BackColor = System.Drawing.Color.Goldenrod;
             this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -165,9 +142,8 @@
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
+
             // button5
-            // 
             this.button5.BackColor = System.Drawing.Color.Goldenrod;
             this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -181,9 +157,8 @@
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
+
             // button4
-            // 
             this.button4.BackColor = System.Drawing.Color.Goldenrod;
             this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -197,9 +172,8 @@
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
+
             // textBox3
-            // 
             this.textBox3.BackColor = System.Drawing.Color.Goldenrod;
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Font = new System.Drawing.Font("Patrick Hand", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -209,9 +183,8 @@
             this.textBox3.Size = new System.Drawing.Size(122, 26);
             this.textBox3.TabIndex = 39;
             this.textBox3.Text = "PROFILE";
-            // 
+
             // textBox2
-            // 
             this.textBox2.BackColor = System.Drawing.Color.Goldenrod;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Amatic SC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -222,9 +195,8 @@
             this.textBox2.Size = new System.Drawing.Size(177, 22);
             this.textBox2.TabIndex = 39;
             this.textBox2.Text = "C-ARTPROJECT_G7";
-            // 
+
             // pictureBox1
-            // 
             this.pictureBox1.BackgroundImage = global::trial_hr_system.Properties.Resources.projectlog;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(60, 20);
@@ -233,9 +205,8 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
-            // 
+
             // textBox1
-            // 
             this.textBox1.BackColor = System.Drawing.Color.Goldenrod;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Amatic SC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -244,9 +215,8 @@
             this.textBox1.Size = new System.Drawing.Size(164, 41);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = "C-ARTPROJECT_G7";
-            // 
+
             // pictureBox2
-            // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.BackgroundImage = global::trial_hr_system.Properties.Resources.snoop_removebg_preview__2_;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -256,9 +226,8 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
-            // 
+
             // button3
-            // 
             this.button3.BackColor = System.Drawing.Color.Goldenrod;
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -272,9 +241,8 @@
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
+
             // panel3
-            // 
             this.panel3.BackColor = System.Drawing.Color.SaddleBrown;
             this.panel3.Controls.Add(this.lblUserName);
             this.panel3.Controls.Add(this.button9);
@@ -284,9 +252,8 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(326, 100);
             this.panel3.TabIndex = 39;
-            // 
+
             // lblUserName
-            // 
             this.lblUserName.AutoSize = true;
             this.lblUserName.Font = new System.Drawing.Font("Patrick Hand", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -294,10 +261,9 @@
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(136, 29);
             this.lblUserName.TabIndex = 39;
-            this.lblUserName.Text = "Zanne Antonette";
-            // 
+            this.lblUserName.Text = "User Name";
+
             // button9
-            // 
             this.button9.BackColor = System.Drawing.Color.SaddleBrown;
             this.button9.BackgroundImage = global::trial_hr_system.Properties.Resources.projectlog;
             this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -309,9 +275,8 @@
             this.button9.TabIndex = 29;
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
+
             // lblUserRole
-            // 
             this.lblUserRole.AutoSize = true;
             this.lblUserRole.Font = new System.Drawing.Font("Patrick Hand", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserRole.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -321,9 +286,8 @@
             this.lblUserRole.TabIndex = 40;
             this.lblUserRole.Text = "APPLICANT";
             this.lblUserRole.Click += new System.EventHandler(this.lblUserRole_Click);
-            // 
+
             // pictureBox7
-            // 
             this.pictureBox7.BackgroundImage = global::trial_hr_system.Properties.Resources.cato1;
             this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox7.Location = new System.Drawing.Point(-48, -47);
@@ -331,9 +295,8 @@
             this.pictureBox7.Size = new System.Drawing.Size(249, 169);
             this.pictureBox7.TabIndex = 23;
             this.pictureBox7.TabStop = false;
-            // 
+
             // pictureBox3
-            // 
             this.pictureBox3.BackgroundImage = global::trial_hr_system.Properties.Resources.cato1;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox3.Location = new System.Drawing.Point(-49, 550);
@@ -341,20 +304,17 @@
             this.pictureBox3.Size = new System.Drawing.Size(249, 169);
             this.pictureBox3.TabIndex = 39;
             this.pictureBox3.TabStop = false;
-            // 
+
             // panel4
-            // 
             this.panel4.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.panel4.Controls.Add(this.lblTime);
             this.panel4.Controls.Add(this.textBox4);
             this.panel4.Location = new System.Drawing.Point(338, 6);
             this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(20);
             this.panel4.Size = new System.Drawing.Size(1028, 58);
             this.panel4.TabIndex = 25;
-            // 
+
             // lblTime
-            // 
             this.lblTime.AutoSize = true;
             this.lblTime.Font = new System.Drawing.Font("Patrick Hand", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.Color.SaddleBrown;
@@ -364,9 +324,8 @@
             this.lblTime.TabIndex = 29;
             this.lblTime.Text = "lblTime";
             this.lblTime.Click += new System.EventHandler(this.lblTime_Click);
-            // 
+
             // textBox4
-            // 
             this.textBox4.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Font = new System.Drawing.Font("Amatic SC", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -375,18 +334,17 @@
             this.textBox4.Size = new System.Drawing.Size(164, 41);
             this.textBox4.TabIndex = 26;
             this.textBox4.Text = "DASHBOARD";
-            // 
+
             // panel6
-            // 
             this.panel6.BackColor = System.Drawing.Color.YellowGreen;
             this.panel6.Controls.Add(this.button8);
             this.panel6.Location = new System.Drawing.Point(860, 86);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(488, 100);
             this.panel6.TabIndex = 27;
-            // 
+            this.panel6.Visible = false;
+
             // button8
-            // 
             this.button8.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.button8.Font = new System.Drawing.Font("Patrick Hand", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -396,9 +354,8 @@
             this.button8.TabIndex = 30;
             this.button8.Text = "View Details";
             this.button8.UseVisualStyleBackColor = false;
-            // 
+
             // panel5
-            // 
             this.panel5.BackColor = System.Drawing.Color.Coral;
             this.panel5.Controls.Add(this.button1);
             this.panel5.Controls.Add(this.label2);
@@ -407,9 +364,9 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(488, 100);
             this.panel5.TabIndex = 28;
-            // 
+            this.panel5.Visible = false;
+
             // button1
-            // 
             this.button1.BackColor = System.Drawing.Color.Firebrick;
             this.button1.Font = new System.Drawing.Font("Patrick Hand", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -419,9 +376,8 @@
             this.button1.TabIndex = 29;
             this.button1.Text = "Upload Now";
             this.button1.UseVisualStyleBackColor = false;
-            // 
+
             // label1
-            // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Patrick Hand", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 10);
@@ -429,18 +385,17 @@
             this.label1.Size = new System.Drawing.Size(130, 29);
             this.label1.TabIndex = 29;
             this.label1.Text = "Action Required";
-            // 
+
             // label2
-            // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Patrick Hand", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(21, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 22);
+            this.label2.Size = new System.Drawing.Size(200, 22);
             this.label2.TabIndex = 30;
-            // 
-            // Dashboard
-            // 
+            this.label2.Text = "Upload your missing documents";
+
+            // Dashboard Form
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Ivory;
@@ -452,6 +407,8 @@
             this.Controls.Add(this.panel1);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
+            this.Load += new System.EventHandler(this.Dashboard_Load);
+
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -466,10 +423,9 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.ResumeLayout(false);
-
         }
-
         #endregion
+
         public System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;

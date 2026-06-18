@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using trial_hr_system.Forms.HR;
 
-namespace trial_hr_system.Forms.Maintenance
+namespace trial_hr_system
 {
     public partial class Reports : Form
     {
@@ -18,46 +10,33 @@ namespace trial_hr_system.Forms.Maintenance
             InitializeComponent();
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
+        private void Reports_Load(object sender, EventArgs e)
         {
+            // Initialize assigned labels safely to prevent blank values on user view load
+            lblUserName.Text = $"User: {SystemHelpers.CurrentUserName}";
+            lblUserRole.Text = $"Role: {SystemHelpers.CurrentUserRole}";
+            lblTime.Text = $"Timestamp: {DateTime.Now.ToShortTimeString()}";
 
+            cmbReportType.SelectedIndex = 0;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void cmbReportType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ApplicantReview dash = new ApplicantReview();
-            dash.Show();
-
-            this.Hide();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            VacancyManagement dash = new VacancyManagement();
-            dash.Show();
-
-            this.Hide();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            HRMaintenance dash = new HRMaintenance();
-            dash.Show();
-
-            this.Hide();
-        }
-
-        private void lblTime_Click(object sender, EventArgs e)
-        {
-            lblTime.Text = DateTime.Now.ToString("MMM dd, yyyy | hh:mm:ss tt");
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            HRLogIn login = new HRLogIn();
-            login.Show();
-
-            this.Hide();
+            switch (cmbReportType.SelectedIndex)
+            {
+                case 0:
+                    dgvReport.DataSource = SystemHelpers.GetApplicantListReport();
+                    break;
+                case 1:
+                    dgvReport.DataSource = SystemHelpers.GetJobVacanciesReport();
+                    break;
+                case 2:
+                    dgvReport.DataSource = SystemHelpers.GetInterviewEvaluationsReport();
+                    break;
+                case 3:
+                    dgvReport.DataSource = SystemHelpers.GetHiringDecisionsReport();
+                    break;
+            }
         }
     }
 }
